@@ -1,0 +1,30 @@
+[package]
+name = "simple-substrate-governance-node"
+description = "A minimal Substrate-based Substrate node, ready for hacking."
+version = "0.0.0"
+license = "Unlicense"
+edition.workspace = true
+publish = false
+build = "build.rs"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[dependencies]
+clap = { features = ["derive"], workspace = true }
+docify = { workspace = true }
+futures = { features = ["thread-pool"], workspace = true }
+futures-timer = { workspace = true }
+jsonrpsee = { features = ["server"], workspace = true }
+
+simple-substrate-governance-runtime = { workspace = true }
+
+[build-dependencies]
+substrate-build-script-utils = { path = "../../polkadot-sdk/substrate/utils/build-script-utils" }
+
+
+[features]
+default = ["std"]
+std = [
+	"simple-substrate-governance-runtime/std",
+]

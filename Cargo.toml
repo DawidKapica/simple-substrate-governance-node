@@ -1,0 +1,29 @@
+[workspace.package]
+edition = "2021"
+repository = "https://github.com/DawidKapica/simple-substrate-governance-node"
+
+[workspace]
+resolver = "2"
+members = [
+  "runtime",
+  "node",
+  "pallets/simple-governance"
+]
+
+[workspace.dependencies]
+simple-substrate-governance-runtime = { path = "./runtime" }
+
+codec = { package = "parity-scale-codec", version = "3.6", default-features = false, features = ["derive"] }
+scale-info = { version = "2.11", default-features = false, features = ["derive"] }
+serde_json = { version = "1.0", default-features = false, features = ["alloc"] }
+
+clap = { version = "4.0", features = ["derive"] }
+docify = "0.4.1"
+futures = { version = "0.3", features = ["thread-pool"] }
+futures-timer = "3.0"
+jsonrpsee = { version = "0.25.1", features = ["server"] }
+frame-support = { path = "../polkadot-sdk/substrate/frame/support", default-features = false }
+frame-system = { path = "../polkadot-sdk/substrate/frame/system", default-features = false }
+sp-runtime = { path = "../polkadot-sdk/substrate/primitives/runtime", default-features = false }
+sp-std = { path = "../polkadot-sdk/substrate/primitives/std", default-features = false }
+getrandom = "0.3.3"
